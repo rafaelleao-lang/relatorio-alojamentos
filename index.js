@@ -23,7 +23,7 @@ $(document).ready(function () {
     // =====================================================
     // PREVIEW DE IMAGENS (FUNCIONA TELA + PDF)
     // =====================================================
-    $('.input-image').on('change', function () {
+    $(document).on('change', '.input-image', function () {
 
         const files = Array.from(this.files);
         if (!files.length) return;
