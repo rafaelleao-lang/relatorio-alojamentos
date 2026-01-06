@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Alojamentos – MSE</title>
+
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <!-- CSS LOCAL -->
+    <link rel="stylesheet" href="main.css">
+
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- HTML2PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+
+<body class="content">
+
+<header class="header-mse">
+    <div class="header-top">
+        <div class="header-col header-left">
+            <img src="https://i.postimg.cc/t453fyV8/logo-mse-fundo-transparente.png" class="logo_header">
+        </div>
+        <div class="header-col header-center">
+            <h1>RELATÓRIO DE ALOJAMENTOS</h1>
+        </div>
+        <div class="header-col header-right"></div>
+    </div>
+    <div class="header-bottom">
+        MSE Engenharia Ltda – CNPJ: 78.023.116/0001-33
+    </div>
+</header>
+
+<main class="container-fluid">
+<form class="form-alojamento mt-4 px-4 pb-5">
+
+<!-- ================= DADOS DO ALOJAMENTO ================= -->
+<section class="col-md-11 bg-light py-4 question">
+
+    <div class="form-group">
+        <label>Nome da Obra:</label>
+        <input type="text" id="nome-obra" class="form-control">
+        <div class="pdf-nome-obra d-none"></div>
+    </div>
+
+    <div class="form-group">
+        <label>Endereço do alojamento:</label>
+        <input type="text" id="endereco-alojamento" class="form-control">
+        <div class="pdf-endereco d-none"></div>
+    </div>
+
+    <div class="form-group">
+        <label>Alojamento de qual empresa:</label>
+        <input type="text" id="empresa-alojamento" class="form-control">
+        <div class="pdf-empresa d-none"></div>
+    </div>
+
+    <div class="form-group">
+        <label>Responsável pela compra dos itens faltantes:</label>
+        <input type="text" id="responsavel-compra" class="form-control">
+        <div class="pdf-resp-compra d-none"></div>
+    </div>
+
+    <div class="form-group">
+        <label>Responsável pelo alojamento:</label>
+        <input type="text" id="responsavel-alojamento" class="form-control">
+        <div class="pdf-resp-alojamento d-none"></div>
+    </div>
+
+    <div class="form-row">
+        <div class="col-md-8">
+            <label>Responsável pelo relatório:</label>
+            <input type="text" id="responsavel-relatorio" class="form-control">
+            <div class="pdf-responsavel-relatorio d-none"></div>
+        </div>
+        <div class="col-md-4">
+            <label>Data:</label>
+            <input type="date" id="data" class="form-control">
+            <div class="pdf-data d-none"></div>
+        </div>
+    </div>
+
+</section>
+
+<div class="pagebreak"></div>
+
+<section class="col-md-11 bg-light py-3 section-items">
+
+<!-- ================= ITENS 1 A 19 ================= -->
+
+<!-- ITEM 1 -->
+<div class="question" id="question-1">
+<div class="bg-white p-4">
+<h2>Item 1 - 18.4.2.10.1</h2>
+<p>Paredes de alvenaria, madeira ou material equivalente. Piso de concreto, cimentado, madeira ou material equivalente. Cobertura que proteja das intempérie. Área de ventilação no mín 1/10 área do piso. Iluminação natural e/ou artificial. Não estar no subsolo ou porões?</p>
+<div class="form-check"><input class="form-check-input conforme" type="radio" name="conformity-1"> Conforme</div>
+<div class="form-check"><input class="form-check-input nao-conforme" type="radio" name="conformity-1" checked> Não Conforme</div>
+<div class="portraits"></div>
+<input
+    type="file"
+    class="input-image"
+    accept="image/*"
+    multiple
+>
+<textarea class="observacoes-textarea"></textarea>
+<p class="caracteres-limit"><span class="caracteres">0</span>/255</p>
+</div>
+</div>
+
+<!-- ITEM 2 -->
+<div class="question" id="question-2">
+<div class="bg-white p-4">
+<h2>Item 2 - 24.3.6</h2>
+<p>Os compartimentos destinados aos chuveiros devem: ser individuais, higiênicos, com portas, água quente e fria, piso impermeável, suporte para sabonete e toalha e dimensões mínimas de 0,80m x 0,80m?</p>
+<div class="form-check"><input class="form-check-input conforme" type="radio" name="conformity-2"> Conforme</div>
+<div class="form-check"><input class="form-check-input nao-conforme" type="radio" name="conformity-2" checked> Não Conforme</div>
+<div class="portraits"></div>
+<input
+    type="file"
+    class="input-image"
+    accept="image/*"
+    multiple
+>
+<textarea class="observacoes-textarea"></textarea>
+<p class="caracteres-limit"><span class="caracteres">0</span>/255</p>
+</div>
+</div>
+
+<!-- ITEM 3 -->
+<div class="question" id="question-3">
+<div class="bg-white p-4">
+<h2>Item 3 - 4.1.2</h2>
+<p>Bacia sanitária com assento (1 para cada 10 alojados), lavatório, produtos de higiene e papel para enxugo das mãos?</p>
+<div class="form-check"><input class="form-check-input conforme" type="radio" name="conformity-3"> Conforme</div>
+<div class="form-check"><input class="form-check-input nao-conforme" type="radio" name="conformity-3" checked> Não Conforme</div>
+<div class="portraits"></div>
+<input
+    type="file"
+    class="input-image"
+    accept="image/*"
+    multiple
+>
+<textarea class="observacoes-textarea"></textarea>
+<p class="caracteres-limit"><span class="caracteres">0</span>/255</p>
+</div>
+</div>
+
+<!-- ITEM 4 -->
+<div class="question" id="question-4">
+<div class="bg-white p-4">
+<h2>Item 4 - 24.2.3</h2>
+<p>Instalações sanitárias limpas, conservadas, com piso e paredes impermeáveis, peças íntegras, ventilação, água canalizada e esgoto adequado?</p>
+<div class="form-check"><input class="form-check-input conforme" type="radio" name="conformity-4"> Conforme</div>
+<div class="form-check"><input class="form-check-input nao-conforme" type="radio" name="conformity-4" checked> Não Conforme</div>
+<div class="portraits"></div>
+<input
+    type="file"
+    class="input-image"
+    accept="image/*"
+    multiple
+>
+<textarea class="observacoes-textarea"></textarea>
+<p class="caracteres-limit"><span class="caracteres">0</span>/255</p>
+</div>
+</div>
+
+<!-- ITEM 5 -->
+<div class="question" id="question-5">
+<div class="bg-white p-4">
+<h2>Item 5 - 24.7.2</h2>
+<p>Instalações sanitárias com chuveiro na proporção mínima de 1 para cada 10 trabalhadores hospedados?</p>
+<div class="form-check"><input class="form-check-input conforme" type="radio" name="conformity-5"> Conforme</div>
+<div class="form-check"><input class="form-check-input nao-conforme" type="radio" name="conformity-5" checked> Não Conforme</div>
+<div class="portraits"></div>
+<input
+    type="file"
+    class="input-image"
+    accept="image/*"
+    multiple
+>
+<textarea class="observacoes-textarea"></textarea>
+<p class="caracteres-limit"><span class="caracteres">0</span>/255</p>
+</div>
+</div>
+
+<!-- ITENS 6 A 19 -->
+<!-- Seguem exatamente o mesmo padrão estrutural, já aplicados -->
+
+<!-- ITEM 6 -->
+<div class="question" id="question-6">
+<div class="bg-white p-4">
+<h2>Item 6 - 24.4.6</h2>
+<p>Armários com dimensões mínimas de 0,40m x 0,30m x 0,40m para guarda de pertences?</p>
+<div class="form-check"><input class="form-check-input conforme" type="radio" name="conformity-6"> Conforme</div>
+<div class="form-check"><input class="form-check-input nao-conforme" type="radio" name="conformity-6" checked> Não Conforme</div>
+<div class="portraits"></div>
+<input
+    type="file"
+    class="input-image"
+    accept="image/*"
+    multiple
+>
+<textarea class="observacoes-textarea"></textarea>
+<p class="caracteres-limit"><span class="caracteres">0</span>/255</p>
+</div>
+</div>
+
+<!-- ITEM 7 -->
+<div class="question" id="question-7">
+<div class="bg-white p-4">
+<h2>Item 7 - 24.7.3</h2>
+<p>Camas adequadas, colchões certificados, roupas de cama limpas, ventilação adequada, limite de ocupação e conforto acústico?</p>
+<div class="form-check"><input class="form-check-input conforme" type="radio" name="conformity-7"> Conforme</div>
+<div class="form-check"><input class="form-check-input nao-conforme" type="radio" name="conformity-7" checked> Não Conforme</div>
+<div class="portraits"></div>
+<input
+    type="file"
+    class="input-image"
+    accept="image/*"
+    multiple
+>
+<textarea class="observacoes-textarea"></textarea>
+<p class="caracteres-limit"><span class="caracteres">0</span>/255</p>
+</div>
+</div>
+
+<!-- ITEM 8 -->
+<div class="question" id="question-8">
+<div class="bg-white p-4">
+<h2>Item 8 - 24.7.3.1</h2>
+<p>Camas superiores de beliches com proteção lateral e escada fixa?</p>
+<div class="form-check"><input class="form-check-input conforme" type="radio" name="conformity-8"> Conforme</div>
+<div class="form-check"><input class="form-check-input nao-conforme" type="radio" name="conformity-8" checked> Não Conforme</div>
+<div class="portraits"></div>
+<input
+    type="file"
+    class="input-image"
+    accept="image/*"
+    multiple
+>
+<textarea class="observacoes-textarea"></textarea>
+<p class="caracteres-limit"><span class="caracteres">0</span>/255</p>
+</div>
+</div>
+
+<!-- ITEM 9 -->
+<div class="question" id="question-9">
+<div class="bg-white p-4">
+<h2>Item 9 - 24.7.4</h2>
+<p>Trabalhadores do mesmo quarto pertencem preferencialmente ao mesmo turno?</p>
+<div class="form-check"><input class="form-check-input conforme" type="radio" name="conformity-9"> Conforme</div>
+<div class="form-check"><input class="form-check-input nao-conforme" type="radio" name="conformity-9" checked> Não Conforme</div>
+<div class="portraits"></div>
+<input
+    type="file"
+    class="input-image"
+    accept="image/*"
+    multiple
+>
+<textarea class="observacoes-textarea"></textarea>
+<p class="caracteres-limit"><span class="caracteres">0</span>/255</p>
+</div>
+</div>
+
+<!-- ITEM 10 -->
+<div class="question" id="question-10">
+<div class="bg-white p-4">
+<h2>Item 10 - 24.9.7.1</h2>
+<p>Pé-direito mínimo de 2,50m ou 3,00m em dormitórios com beliche?</p>
+<div class="form-check"><input class="form-check-input conforme" type="radio" name="conformity-10"> Conforme</div>
+<div class="form-check"><input class="form-check-input nao-conforme" type="radio" name="conformity-10" checked> Não Conforme</div>
+<div class="portraits"></div>
+<input
+    type="file"
+    class="input-image"
+    accept="image/*"
+    multiple
+>
+<textarea class="observacoes-textarea"></textarea>
+<p class="caracteres-limit"><span class="caracteres">0</span>/255</p>
+</div>
+</div>
+
+<!-- ITEM 11 -->
+<div class="question" id="question-11">
+<div class="bg-white p-4">
+<h2>Item 11 - 24.9.7.2</h2>
+<p>Instalações elétricas protegidas contra choques elétricos?</p>
+<div class="form-check"><input class="form-check-input conforme" type="radio" name="conformity-11"> Conforme</div>
+<div class="form-check"><input class="form-check-input nao-conforme" type="radio" name="conformity-11" checked> Não Conforme</div>
+<div class="portraits"></div>
+<input
+    type="file"
+    class="input-image"
+    accept="image/*"
+    multiple
+>
+<textarea class="observacoes-textarea"></textarea>
+<p class="caracteres-limit"><span class="caracteres">0</span>/255</p>
+</div>
+</div>
+
+<!-- ITEM 12 -->
+<div class="question" id="question-12">
+<div class="bg-white p-4">
+<h2>Item 12 - 4.3.2.4</h2>
+<p>Distância mínima entre camas de 0,80m para circulação?</p>
+<div class="form-check"><input class="form-check-input conforme" type="radio" name="conformity-12"> Conforme</div>
+<div class="form-check"><input class="form-check-input nao-conforme" type="radio" name="conformity-12" checked> Não Conforme</div>
+<div class="portraits"></div>
+<input
+    type="file"
+    class="input-image"
+    accept="image/*"
+    multiple
+>
+<textarea class="observacoes-textarea"></textarea>
+<p class="caracteres-limit"><span class="caracteres">0</span>/255</p>
+</div>
+</div>
+
+<!-- ITEM 13 -->
+<div class="question" id="question-13">
+<div class="bg-white p-4">
+<h2>Item 13 - 4.3.3</h2>
+<p>Existência de tomadas elétricas na proporção mínima de 1 para cada 2 camas ou beliche?</p>
+<div class="form-check"><input class="form-check-input conforme" type="radio" name="conformity-13"> Conforme</div>
+<div class="form-check"><input class="form-check-input nao-conforme" type="radio" name="conformity-13" checked> Não Conforme</div>
+<div class="portraits"></div>
+<input
+    type="file"
+    class="input-image"
+    accept="image/*"
+    multiple
+>
+<textarea class="observacoes-textarea"></textarea>
+<p class="caracteres-limit"><span class="caracteres">0</span>/255</p>
+</div>
+</div>
+
+<!-- ITEM 14 -->
+<div class="question" id="question-14">
+<div class="bg-white p-4">
+<h2>Item 14 - 4.3.4</h2>
+<p>Fiações elétricas protegidas, sem improvisos ou uso de benjamim?</p>
+<div class="form-check"><input class="form-check-input conforme" type="radio" name="conformity-14"> Conforme</div>
+<div class="form-check"><input class="form-check-input nao-conforme" type="radio" name="conformity-14" checked> Não Conforme</div>
+<div class="portraits"></div>
+<input
+    type="file"
+    class="input-image"
+    accept="image/*"
+    multiple
+>
+<textarea class="observacoes-textarea"></textarea>
+<p class="caracteres-limit"><span class="caracteres">0</span>/255</p>
+</div>
+</div>
+
+<!-- ITEM 15 -->
+<div class="question" id="question-15">
+<div class="bg-white p-4">
+<h2>Item 15 - 24.7.2</h2>
+<p>Alojamento mantido em condições adequadas de conservação, higiene e limpeza?</p>
+<div class="form-check"><input class="form-check-input conforme" type="radio" name="conformity-15"> Conforme</div>
+<div class="form-check"><input class="form-check-input nao-conforme" type="radio" name="conformity-15" checked> Não Conforme</div>
+<div class="portraits"></div>
+<input
+    type="file"
+    class="input-image"
+    accept="image/*"
+    multiple
+>
+<textarea class="observacoes-textarea"></textarea>
+<p class="caracteres-limit"><span class="caracteres">0</span>/255</p>
+</div>
+</div>
+
+<!-- ITEM 16 -->
+<div class="question" id="question-16">
+<div class="bg-white p-4">
+<h2>Item 16 - 24.7.9</h2>
+<p>Sanitários higienizados diariamente, sem fogão nos quartos e controle de vetores?</p>
+<div class="form-check"><input class="form-check-input conforme" type="radio" name="conformity-16"> Conforme</div>
+<div class="form-check"><input class="form-check-input nao-conforme" type="radio" name="conformity-16" checked> Não Conforme</div>
+<div class="portraits"></div>
+<input
+    type="file"
+    class="input-image"
+    accept="image/*"
+    multiple
+>
+<textarea class="observacoes-textarea"></textarea>
+<p class="caracteres-limit"><span class="caracteres">0</span>/255</p>
+</div>
+</div>
+
+<!-- ITEM 17 -->
+<div class="question" id="question-17">
+<div class="bg-white p-4">
+<h2>Item 17 - 4.7.2</h2>
+<p>Disponibilidade de televisores ou acesso à internet (Wi-Fi)?</p>
+<div class="form-check"><input class="form-check-input conforme" type="radio" name="conformity-17"> Conforme</div>
+<div class="form-check"><input class="form-check-input nao-conforme" type="radio" name="conformity-17" checked> Não Conforme</div>
+<div class="portraits"></div>
+<input
+    type="file"
+    class="input-image"
+    accept="image/*"
+    multiple
+>
+<textarea class="observacoes-textarea"></textarea>
+<p class="caracteres-limit"><span class="caracteres">0</span>/255</p>
+</div>
+</div>
+
+<!-- ITEM 18 -->
+<div class="question" id="question-18">
+<div class="bg-white p-4">
+<h2>Item 18 - 4.8.6</h2>
+<p>Existência de aparelhos extintores disponíveis no local?</p>
+<div class="form-check"><input class="form-check-input conforme" type="radio" name="conformity-18"> Conforme</div>
+<div class="form-check"><input class="form-check-input nao-conforme" type="radio" name="conformity-18" checked> Não Conforme</div>
+<div class="portraits"></div>
+<input
+    type="file"
+    class="input-image"
+    accept="image/*"
+    multiple
+>
+<textarea class="observacoes-textarea"></textarea>
+<p class="caracteres-limit"><span class="caracteres">0</span>/255</p>
+</div>
+</div>
+
+<!-- ITEM 19 -->
+<div class="question" id="question-19">
+<div class="bg-white p-4">
+<h2>Item 19 - Norma Interna</h2>
+<p>Placas de sinalização com regras gerais do alojamento e aviso de Proibido Fumar?</p>
+<div class="form-check"><input class="form-check-input conforme" type="radio" name="conformity-19"> Conforme</div>
+<div class="form-check"><input class="form-check-input nao-conforme" type="radio" name="conformity-19" checked> Não Conforme</div>
+<div class="portraits"></div>
+<input
+    type="file"
+    class="input-image"
+    accept="image/*"
+    multiple
+>
+<textarea class="observacoes-textarea"></textarea>
+<p class="caracteres-limit"><span class="caracteres">0</span>/255</p>
+</div>
+</div>
+
+<!-- BOTÃO -->
+<div class="row justify-content-center mt-4">
+    <div class="col-md-11">
+        <button class="btn btn-success btn-submit">Gerar PDF do Relatório</button>
+    </div>
+</div>
+
+</section>
+</form>
+</main>
+
+<script src="index.js"></script>
+</body>
+</html>
