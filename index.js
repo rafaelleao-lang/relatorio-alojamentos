@@ -143,33 +143,42 @@ function prepararParaPDF() {
                 .text(textoObs)
                 .insertAfter(textarea);
         }
-    });
-}
 
-// ============================
-// CONTROLE DE FOTOS NO PDF
-// ============================
-const portraits = container.find('.portraits');
-const imagens = portraits.find('img');
+        // ============================
+        // IMAGENS – CONTROLE PDF
+        // ============================
+        const portraits = container.find('.portraits');
+        const imagens = portraits.find('img');
 
-if (imagens.length === 0) {
-    // ❌ NÃO TEM FOTO → NÃO MOSTRA NADA NO PDF
-    portraits.hide();
-} else {
-    // ✅ TEM FOTO → AJUSTES PARA PDF
-    portraits.show();
+        // ❌ Remove botões e inputs do PDF
+        container.find('.input-image').remove();
+        container.find('.upload-actions').remove();
 
-    imagens.each(function () {
-        $(this).css({
-            'max-width': '100%',
-            'height': 'auto',
-            'display': 'block',
-            'page-break-inside': 'avoid',
-            'break-inside': 'avoid',
-            'margin-bottom': '10px'
-        });
-    });
-}
+        // ❌ Se NÃO tem imagem, remove o bloco inteiro
+        if (imagens.length === 0) {
+            portraits.remove();
+        } else {
+            // ✅ Se tem imagem, protege contra corte
+            portraits.css({
+                'page-break-inside': 'avoid',
+                'break-inside': 'avoid'
+            });
+
+            imagens.each(function () {
+                $(this).css({
+                    'display': 'block',
+                    'max-width': '100%',
+                    'height': 'auto',
+                    'page-break-inside': 'avoid',
+                    'break-inside': 'avoid',
+                    'margin-bottom': '10px'
+                });
+            });
+        }
+            }); // ✅ FECHA o .each()
+
+        } // ✅ FECHA prepararParaPDF()
+
 
 // 🔒 SEMPRE esconder inputs e botões no PDF
 container.find('.input-image').hide();
