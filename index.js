@@ -146,6 +146,35 @@ function prepararParaPDF() {
     });
 }
 
+// ============================
+// CONTROLE DE FOTOS NO PDF
+// ============================
+const portraits = container.find('.portraits');
+const imagens = portraits.find('img');
+
+if (imagens.length === 0) {
+    // ❌ NÃO TEM FOTO → NÃO MOSTRA NADA NO PDF
+    portraits.hide();
+} else {
+    // ✅ TEM FOTO → AJUSTES PARA PDF
+    portraits.show();
+
+    imagens.each(function () {
+        $(this).css({
+            'max-width': '100%',
+            'height': 'auto',
+            'display': 'block',
+            'page-break-inside': 'avoid',
+            'break-inside': 'avoid',
+            'margin-bottom': '10px'
+        });
+    });
+}
+
+// 🔒 SEMPRE esconder inputs e botões no PDF
+container.find('.input-image').hide();
+container.find('.upload-actions').hide();
+
 
 // =====================================================
 // GERAR PDF
