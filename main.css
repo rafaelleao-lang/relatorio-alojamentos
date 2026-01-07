@@ -478,3 +478,31 @@ body {
         padding: 12px;
     }
 }
+/* ===============================
+   PDF – CONTROLE DE IMAGENS
+================================ */
+
+/* container de fotos nunca quebra */
+.portraits {
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+/* imagem nunca é cortada */
+.portraits img {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    display: block;
+    max-width: 100%;
+}
+
+/* se a imagem não couber, joga pra próxima página */
+@media print {
+    .portraits {
+        page-break-before: auto;
+    }
+
+    .portraits img {
+        page-break-before: auto;
+    }
+}
