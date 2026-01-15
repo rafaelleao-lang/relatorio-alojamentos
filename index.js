@@ -105,6 +105,10 @@ function prepararParaPDF() {
     copiarCampo('#responsavel-compra', '.pdf-resp-compra');
     copiarCampo('#responsavel-alojamento', '.pdf-resp-alojamento');
     copiarCampo('#responsavel-relatorio', '.pdf-responsavel-relatorio');
+    copiarCampo('#num-quartos', '.pdf-num-quartos');
+    copiarCampo('#num-banheiros', '.pdf-num-banheiros');
+    copiarCampo('#num-alojados', '.pdf-num-alojados');
+    copiarCampo('#capacidade-maxima', '.pdf-capacidade-maxima');
 
     const data = $('#data').val();
     if (data) {
