@@ -118,20 +118,14 @@ function prepararParaPDF() {
     }
 
 // ============================
-// ITENS A SEREM COMPRADOS
+// ITENS A SEREM COMPRADOS (PDF)
 // ============================
 const itensComprar = $('#itens-comprar').val()?.trim();
 
 if (itensComprar) {
     $('.pdf-itens-comprar')
         .text(itensComprar)
-        .removeClass('d-none')
-        .css({
-            'border': '1px solid #000',
-            'padding': '10px',
-            'margin-top': '10px',
-            'white-space': 'pre-wrap'
-        });
+        .removeClass('d-none');
 }
 
     // =====================================================
