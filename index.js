@@ -105,10 +105,6 @@ function prepararParaPDF() {
     copiarCampo('#responsavel-compra', '.pdf-resp-compra');
     copiarCampo('#responsavel-alojamento', '.pdf-resp-alojamento');
     copiarCampo('#responsavel-relatorio', '.pdf-responsavel-relatorio');
-    copiarCampo('#num-quartos', '.pdf-num-quartos');
-    copiarCampo('#num-banheiros', '.pdf-num-banheiros');
-    copiarCampo('#num-alojados', '.pdf-num-alojados');
-    copiarCampo('#capacidade-maxima', '.pdf-capacidade-maxima');
 
     const data = $('#data').val();
     if (data) {
@@ -116,17 +112,6 @@ function prepararParaPDF() {
             .text(data.split('-').reverse().join('/'))
             .removeClass('d-none');
     }
-
-// ============================
-// ITENS A SEREM COMPRADOS (PDF)
-// ============================
-const itensComprar = $('#itens-comprar').val()?.trim();
-
-if (itensComprar) {
-    $('.pdf-itens-comprar')
-        .text(itensComprar)
-        .removeClass('d-none');
-}
 
     // =====================================================
     // QUESTÕES
@@ -180,23 +165,24 @@ if (itensComprar) {
             });
 
             imagens.each(function () {
-
-                // força imagem a começar em página nova se for grande
                 $(this).css({
                     'display': 'block',
                     'max-width': '100%',
                     'height': 'auto',
-                    'margin-bottom': '10px',
-                    'page-break-before': 'always',
-                    'break-before': 'page'
+                    'page-break-inside': 'avoid',
+                    'break-inside': 'avoid',
+                    'margin-bottom': '10px'
                 });
-
             });
         }
             }); // ✅ FECHA o .each()
 
         } // ✅ FECHA prepararParaPDF()
 
+
+// 🔒 SEMPRE esconder inputs e botões no PDF
+container.find('.input-image').hide();
+container.find('.upload-actions').hide();
 
 
 // =====================================================
