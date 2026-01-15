@@ -215,8 +215,8 @@ function gerarPDF() {
         },
         html2canvas: {
             scale: 2,
-            useCORS: true,
-            scrollY: 0
+            useCORS: true
+            // ❌ REMOVIDO scrollY
         },
         jsPDF: {
             unit: 'mm',
