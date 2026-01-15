@@ -93,24 +93,11 @@ $(document).ready(function () {
 // =====================================================
 function prepararParaPDF() {
 
-    // =====================================================
-    // 1️⃣ COPIA ITENS A SEREM COMPRADOS (ANTES DE TUDO)
-    // =====================================================
-    const itensComprar = $('#itens-comprar').val();
-
-    if (itensComprar && itensComprar.trim() !== '') {
-        $('.pdf-itens-comprar')
-            .text(itensComprar)
-            .removeClass('d-none');
-    }
-
-    // =====================================================
-    // 2️⃣ AGORA ATIVA O MODO PDF
-    // =====================================================
+    // ativa modo PDF
     document.querySelector('.content').classList.add('modo-pdf');
 
     // =====================================================
-    // 3️⃣ DADOS DO CABEÇALHO
+    // DADOS DO CABEÇALHO
     // =====================================================
     copiarCampo('#nome-obra', '.pdf-nome-obra');
     copiarCampo('#endereco-alojamento', '.pdf-endereco');
@@ -130,13 +117,27 @@ function prepararParaPDF() {
             .removeClass('d-none');
     }
 
+// ============================
+// ITENS A SEREM COMPRADOS (PDF)
+// ============================
+const itensComprar = $('#itens-comprar').val()?.trim();
+
+if (itensComprar) {
+    $('.pdf-itens-comprar')
+        .text(itensComprar)
+        .removeClass('d-none');
+}
+
     // =====================================================
-    // 4️⃣ QUESTÕES (IGUAL AO SEU)
+    // QUESTÕES
     // =====================================================
     $('[id^="question-"]').each(function () {
 
         const container = $(this);
 
+        // ============================
+        // STATUS CONFORME / NÃO
+        // ============================
         const conforme = container.find('input.conforme:checked').length > 0;
 
         const statusDiv = $('<div>', {
@@ -146,30 +147,41 @@ function prepararParaPDF() {
 
         container.find('h2').after(statusDiv);
 
+        // ============================
+        // OBSERVAÇÕES
+        // ============================
         const textarea = container.find('.observacoes-textarea');
-        const textoObs = textarea.val();
+        const textoObs = textarea.val()?.trim();
 
-        if (textoObs && textoObs.trim() !== '') {
+        if (textoObs) {
             $('<div class="pdf-observacoes"></div>')
                 .text(textoObs)
                 .insertAfter(textarea);
         }
 
+        // ============================
+        // IMAGENS – CONTROLE PDF
+        // ============================
         const portraits = container.find('.portraits');
         const imagens = portraits.find('img');
 
+        // ❌ Remove botões e inputs do PDF
         container.find('.input-image').remove();
         container.find('.upload-actions').remove();
 
+        // ❌ Se NÃO tem imagem, remove o bloco inteiro
         if (imagens.length === 0) {
             portraits.remove();
         } else {
+            // ✅ Se tem imagem, protege contra corte
             portraits.css({
                 'page-break-inside': 'avoid',
                 'break-inside': 'avoid'
             });
 
             imagens.each(function () {
+
+                // força imagem a começar em página nova se for grande
                 $(this).css({
                     'display': 'block',
                     'max-width': '100%',
@@ -178,10 +190,12 @@ function prepararParaPDF() {
                     'page-break-before': 'always',
                     'break-before': 'page'
                 });
+
             });
         }
-    });
-}
+            }); // ✅ FECHA o .each()
+
+        } // ✅ FECHA prepararParaPDF()
 
 
 
