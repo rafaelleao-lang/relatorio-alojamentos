@@ -117,6 +117,23 @@ function prepararParaPDF() {
             .removeClass('d-none');
     }
 
+// ============================
+// ITENS A SEREM COMPRADOS
+// ============================
+const itensComprar = $('#itens-comprar').val()?.trim();
+
+if (itensComprar) {
+    $('.pdf-itens-comprar')
+        .text(itensComprar)
+        .removeClass('d-none')
+        .css({
+            'border': '1px solid #000',
+            'padding': '10px',
+            'margin-top': '10px',
+            'white-space': 'pre-wrap'
+        });
+}
+
     // =====================================================
     // QUESTÕES
     // =====================================================
@@ -169,24 +186,23 @@ function prepararParaPDF() {
             });
 
             imagens.each(function () {
+
+                // força imagem a começar em página nova se for grande
                 $(this).css({
                     'display': 'block',
                     'max-width': '100%',
                     'height': 'auto',
-                    'page-break-inside': 'avoid',
-                    'break-inside': 'avoid',
-                    'margin-bottom': '10px'
+                    'margin-bottom': '10px',
+                    'page-break-before': 'always',
+                    'break-before': 'page'
                 });
+
             });
         }
             }); // ✅ FECHA o .each()
 
         } // ✅ FECHA prepararParaPDF()
 
-
-// 🔒 SEMPRE esconder inputs e botões no PDF
-container.find('.input-image').hide();
-container.find('.upload-actions').hide();
 
 
 // =====================================================
