@@ -213,7 +213,19 @@ function gerarPDF() {
         pagebreak: {
             mode: ['css']
         }
-    }).from(content).save();
+    }).from(content).toPdf().get('pdf').then(function (pdf) {
+
+        const totalPages = pdf.internal.getNumberOfPages();
+
+        // Remove páginas finais em branco
+        for (let i = totalPages; i > 1; i--) {
+            const page = pdf.getPageInfo(i);
+            if (!page) {
+                pdf.deletePage(i);
+            }
+        }
+
+    }).save();
 }
 
 
