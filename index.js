@@ -184,11 +184,6 @@ function prepararParaPDF() {
         } // ✅ FECHA prepararParaPDF()
 
 
-// 🔒 SEMPRE esconder inputs e botões no PDF
-container.find('.input-image').hide();
-container.find('.upload-actions').hide();
-
-
 // =====================================================
 // GERAR PDF
 // =====================================================
