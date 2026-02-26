@@ -78,6 +78,7 @@ $(document).ready(function () {
         if (pdfGerado) return;
         pdfGerado = true;
 
+        window.scrollTo(0, 0);
         prepararParaPDF();
 
         requestAnimationFrame(() => {
@@ -204,7 +205,6 @@ function gerarPDF() {
             useCORS: true,
             allowTaint: true,
             imageTimeout: 15000,
-            scrollY: -window.scrollY,
             windowWidth: document.documentElement.scrollWidth,
             windowHeight: document.documentElement.scrollHeight
         },
