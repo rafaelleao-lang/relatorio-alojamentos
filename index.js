@@ -80,9 +80,9 @@ $(document).ready(function () {
 
         prepararParaPDF();
 
-        setTimeout(() => {
-            gerarPDF();
-        }, 1200);
+        requestAnimationFrame(() => {
+            setTimeout(gerarPDF, 300);
+        });
     });
 
 });
@@ -155,12 +155,12 @@ function prepararParaPDF() {
         const imagens = portraits.find('img');
 
         // ❌ Remove botões e inputs do PDF
-        container.find('.input-image').remove();
-        container.find('.upload-actions').remove();
+        container.find('.input-image').hide();
+        container.find('.upload-actions').hide();
 
         // ❌ Se NÃO tem imagem, remove o bloco inteiro
         if (imagens.length === 0) {
-            portraits.remove();
+            portraits.hide();
         } else {
             // ✅ Se tem imagem, protege contra corte
             portraits.css({
@@ -179,9 +179,10 @@ function prepararParaPDF() {
                 });
             });
         }
-            }); // ✅ FECHA o .each()
 
-        } // ✅ FECHA prepararParaPDF()
+            }); 
+
+        } 
 
 
 // =====================================================
@@ -189,7 +190,7 @@ function prepararParaPDF() {
 // =====================================================
 function gerarPDF() {
 
-    const content = document.querySelector('.content');
+    const content = document.querySelector('form.form-alojamento');
 
     html2pdf().set({
         margin: [10, 10, 10, 10],
@@ -201,6 +202,8 @@ function gerarPDF() {
         html2canvas: {
             scale: 2,
             useCORS: true,
+            allowTaint: true,
+            imageTimeout: 15000,
             scrollY: -window.scrollY,
             windowWidth: document.documentElement.scrollWidth,
             windowHeight: document.documentElement.scrollHeight
