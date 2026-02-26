@@ -191,7 +191,7 @@ function prepararParaPDF() {
 // =====================================================
 function gerarPDF() {
 
-    const content = document.querySelector('form.form-alojamento');
+    const content = document.querySelector('.content');
 
     html2pdf().set({
         margin: [10, 10, 10, 10],
@@ -231,3 +231,4 @@ function copiarCampo(inputSelector, pdfSelector) {
         $(pdfSelector).text(valor).removeClass('d-none');
     }
 }
+
